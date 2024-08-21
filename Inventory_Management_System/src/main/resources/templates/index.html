@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: main(~{:: div})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:if="${#ctx.session.notlogin}">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong th:text="${#ctx.session.notlogin}"></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+<div th:unless="${#ctx.session.notlogin}">
+</div>
+<div class="container-fluid">
+<div class="row mt-3">
+<div class="col-md-6 ">
+<div class="card">
+<div class="card-body m-auto">
+<img alt="Product Image" th:src="@{'/Images/Product.png'}" style="width:200px;">
+</div>
+<div class="card-footer">
+<h3 style="text-align:center;">Total Products [<span th:text="${#lists.size(plist)}"></span>]</h3>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-body m-auto">
+<img alt="Product Image" th:src="@{'/Images/received.png'}" style="width:200px;">
+</div>
+<div class="card-footer">
+<h3 style="text-align:center;">Total Orders [<span th:text="${#lists.size(olist)}"></span>]</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-9 m-auto">
+<h3 style="text-align: center;"> Recent Orders</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Image</th>
+      <th scope="col">Product Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Order Status</th>
+      <th scope="col">Order Date</th>
+    </tr>
+  </thead>
+  <tbody th:each="e: ${olist}">
+    <tr>
+      <th th:text="${e.oid}"></th>
+      <th th:text="${e.pname}"></th>
+      <th class="text-center"><img th:src="@{'/Images/' + ${e.pimage}}" alt="Image" style="width: 80px;"></th>
+      <th th:text="${e.pquantity}"></th>
+      <th th:text="${e.totalPrice}"></th>
+      <th th:text="${e.status}"></th>
+      <th th:text="${e.odate}"></th>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

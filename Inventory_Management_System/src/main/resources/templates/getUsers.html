@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: main(~{:: div})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row mt-3">
+<div class="col-md-11 m-auto">
+<h3 style="text-align: center;">User List</h3>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">User Name</th>
+      <th scope="col">User Email</th>
+      <th scope="col">User Password</th>
+    </tr>
+  </thead>
+  <tbody th:each="e: ${userList}">
+    <tr>
+      <th th:text="${e.id}"></th>
+      <td th:text="${e.name}"></td>
+      <td th:text="${e.email}"></td>
+      <td th:text="${e.password}"></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body>
+</html>

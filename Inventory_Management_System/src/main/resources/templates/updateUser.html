@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: main(~{:: div})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="container-fluid">
+<div class="row mt-3">
+<div class="col-md-6 m-auto">
+<div class="card">
+<div class="card-header">
+<h2>Update User</h2>
+</div>
+<div class="card-body">
+<form th:action="@{/updateUser}" method="post">
+	<div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="text" name="uname" th:value="${ulist.name}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email address</label>
+    <input type="email" name="uemail" th:value="${ulist.email}" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword3">Password</label>
+    <input type="password" name="upassword" th:value="${ulist.password}" class="form-control" id="exampleInputPassword3">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
